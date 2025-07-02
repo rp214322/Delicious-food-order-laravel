@@ -46,13 +46,13 @@ class UsersTableSeeder extends Seeder
         ]);
         
         DB::table('settings')->insert([            
-            'site_name' => 'Viavi Food Delivery',
-            'currency_symbol' => '$',
+            'site_name' => 'Delicious Food',
+            'currency_symbol' => '₹',
             'site_email' => 'admin@admin.com',
             'site_logo' => 'logo.png',
             'site_favicon' => 'favicon.png',
-            'site_description' => 'Viavi - Food Delivery Script Viavi - Food Delivery is an laravel script for Delivery Restaurants',
-            'site_copyright' => 'Copyright © 2016 Viavi - Food Delivery Script. All Rights Reserved.',
+            'site_description' => 'Delicious - Food is an Order for Delivery Restaurants',
+            'site_copyright' => 'Copyright © 2025 Delicious - Food order. All Rights Reserved.',
             'home_slide_image1' => 'home_slide_image1.png',
             'home_slide_image2' => 'home_slide_image2.png',
             'home_slide_image3' => 'home_slide_image3.png',
@@ -61,36 +61,6 @@ class UsersTableSeeder extends Seeder
             'total_people_served' => '50',
             'total_registered_users' => '100'
         ]);
-         
-        DB::table('restaurant_types')->insert([
-            'type' => 'American',
-            'type_image' => 'American_1458535213'
-        ]);
-        
-        DB::table('restaurant_types')->insert([
-            'type' => 'Chinese',
-            'type_image' => 'Chinese_1458535609'
-        ]);
-
-        DB::table('restaurant_types')->insert([
-            'type' => 'Indian',
-            'type_image' => 'Indian_1458535662'   
-        ]);
-
-        DB::table('restaurant_types')->insert([
-            'type' => 'Mexican',
-            'type_image' => 'Mexican_1458535796'
-        ]);
-
-        DB::table('restaurant_types')->insert([
-            'type' => 'Pizza',
-            'type_image' => 'Sushi_1458535621'
-        ]);
-
-        DB::table('restaurant_types')->insert([
-            'type' => 'Sushi',
-            'type_image' => 'Thai_1458535292'
-        ]); 
         
        // factory('App\User', 20)->create();
     }

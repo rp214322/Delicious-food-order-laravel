@@ -27,7 +27,7 @@
               <div class="thumb_strip"> 
                 <a href="{{URL::to('restaurants/menu/'.$restaurant->restaurant_slug)}}">
 
-                    <img src="{{ URL::asset('upload/restaurants/'.$restaurant->restaurant_logo.'-s.jpg') }}" alt="{{ $restaurant->restaurant_name }}">
+                    <img src="{{ asset('storage/restaurants/'.$restaurant->restaurant_logo.'-s.jpg') }}" alt="{{ $restaurant->restaurant_name }}">
 
                   </a>  
                 </div>         

@@ -41,7 +41,7 @@
                 <td>
                     @if($item->menu_image)
                                  
-                    <img src="{{ URL::asset('upload/menu/'.$item->menu_image.'-s.jpg') }}" width="80" class="img-circle border-white" alt="menu">
+                    <img src="{{ asset('storage/menu/'.$item->menu_image.'-s.jpg') }}" width="80" class="img-circle border-white" alt="menu">
 
                    @else
                     <img src="{{ URL::asset('upload/menu_img_s.png') }}" width="80" class="img-circle border-white"/>

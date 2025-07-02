@@ -11,7 +11,7 @@
       <div class="container">
         <div id="sub_content" class="animated zoomIn">
     <div class="col-md-2 col-sm-3">
-      <div id="thumb"><img src="{{ URL::asset('upload/restaurants/'.$restaurant->restaurant_logo.'-b.jpg') }}" alt="{{ $restaurant->restaurant_name }}"></div>
+      <div id="thumb"><img src="{{ asset('storage/restaurants/'.$restaurant->restaurant_logo.'-b.jpg') }}" alt="{{ $restaurant->restaurant_name }}"></div>
     </div>  
     <div class="col-md-10 col-sm-9">  
       <h1>{{ $restaurant->restaurant_name }}</h1>
@@ -59,7 +59,7 @@
 
               <div class="rstl_img"><a href="#menu_{{$menu_item->id}}">
                 @if($menu_item->menu_image)
-                <img src="{{ URL::asset('upload/menu/'.$menu_item->menu_image.'-s.jpg') }}" />
+                <img src="{{ asset('storage/menu/'.$menu_item->menu_image.'-s.jpg') }}" />
                 @else
                 <img src="{{ URL::asset('upload/menu_img_s.png') }}" />
                 @endif
@@ -69,7 +69,7 @@
                             <a href="#close" title="Close" class="close">X</a>
                             <h2>{{$menu_item->menu_name}}</h2>
                               @if($menu_item->menu_image)
-                              <img src="{{ URL::asset('upload/menu/'.$menu_item->menu_image.'-b.jpg') }}" />
+                              <img src="{{ asset('storage/menu/'.$menu_item->menu_image.'-b.jpg') }}" />
                                @else
                               <img src="{{ URL::asset('upload/menu_img_s.png') }}" />
                               @endif 

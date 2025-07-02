@@ -1,5 +1,7 @@
 @extends("admin.admin_app")
 
+@php use Illuminate\Support\Str; @endphp
+
 @section("content")
 
 <div id="main">
@@ -44,7 +46,7 @@
                             <div class="media-left">
                                 @if(isset($type->type_image))
                                  
-                                    <img src="{{ URL::asset('upload/type/'.$type->type_image.'.jpg') }}" width="100" alt="person">
+                                    <img src="{{ asset('storage/type/'.$type->type_image.(Str::endsWith($type->type_image, '.jpg') ? '' : '.jpg')) }}" width="100" alt="person">
                                 @endif
                                                                 
                             </div>

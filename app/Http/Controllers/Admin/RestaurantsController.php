@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use Session;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 use App\Menu;
 use App\User;
 use App\Order;
@@ -17,6 +20,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image; 
+use Illuminate\Support\Facades\Storage;
 
 
 class RestaurantsController extends MainAdminController
@@ -92,35 +96,25 @@ class RestaurantsController extends MainAdminController
 
 
         //Slug
-
-        if($inputs['restaurant_slug']=="")
-        {
-            $restaurant_slug = str_slug($inputs['restaurant_name'], "-");
-        }
-        else
-        {
-            $restaurant_slug =str_slug($inputs['restaurant_slug'], "-"); 
-        }
+        $restaurant_slug = str_slug($inputs['restaurant_name'], "-");
 
         //Logo image
         $restaurant_logo = $request->file('restaurant_logo');
          
         if($restaurant_logo){
-            
-             \File::delete(public_path() .'/upload/restaurants/'.$restaurant_obj->restaurant_logo.'-b.jpg');
-            \File::delete(public_path() .'/upload/restaurants/'.$restaurant_obj->restaurant_logo.'-s.jpg');
-            
-            $tmpFilePath = 'upload/restaurants/';          
-             
+            // Ensure directory exists
+            if (!Storage::disk('public')->exists('restaurants')) {
+                Storage::disk('public')->makeDirectory('restaurants');
+            }
+            if ($restaurant_obj->restaurant_logo) {
+                Storage::disk('public')->delete('restaurants/'.$restaurant_obj->restaurant_logo.'-b.jpg');
+                Storage::disk('public')->delete('restaurants/'.$restaurant_obj->restaurant_logo.'-s.jpg');
+            }
             $hardPath = substr($restaurant_slug,0,100).'_'.time();
-            
             $img = Image::make($restaurant_logo);
-
-            $img->fit(120, 120)->save($tmpFilePath.$hardPath.'-b.jpg');
-            $img->fit(98, 98)->save($tmpFilePath.$hardPath. '-s.jpg');
-
+            $img->fit(120, 120)->save(storage_path('app/public/restaurants/'.$hardPath.'-b.jpg'));
+            $img->fit(98, 98)->save(storage_path('app/public/restaurants/'.$hardPath.'-s.jpg'));
             $restaurant_obj->restaurant_logo = $hardPath;
-             
         }
 		
         $user_id=Auth::User()->id;

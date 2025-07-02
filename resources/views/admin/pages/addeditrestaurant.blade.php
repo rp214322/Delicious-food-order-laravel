@@ -55,12 +55,6 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Restaurant Slug</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="restaurant_slug" value="{{ isset($restaurant->restaurant_slug) ? $restaurant->restaurant_slug : null }}" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Address</label>
                     <div class="col-sm-9">
                         <textarea name="restaurant_address" id="restaurant_address" cols="60" rows="3" class="form-control">{{ isset($restaurant->restaurant_address) ? $restaurant->restaurant_address : null }}</textarea>
@@ -79,8 +73,7 @@
                         <div class="media">
                             <div class="media-left">
                                 @if(isset($restaurant->restaurant_logo))
-                                 
-                                    <img src="{{ URL::asset('upload/restaurants/'.$restaurant->restaurant_logo.'-s.jpg') }}" width="100" alt="person">
+                                    <img src="{{ asset('storage/restaurants/'.$restaurant->restaurant_logo.'-s.jpg') }}" width="100" alt="person">
                                 @endif
                                                                 
                             </div>

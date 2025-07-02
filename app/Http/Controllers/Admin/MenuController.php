@@ -13,6 +13,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Session;
 use Intervention\Image\Facades\Image; 
+use Illuminate\Support\Facades\Storage;
 
 
 class MenuController extends MainAdminController
@@ -92,21 +93,19 @@ class MenuController extends MainAdminController
         $menu_image = $request->file('menu_image');
          
         if($menu_image){
-            
-             \File::delete(public_path() .'/upload/menu/'.$menu->menu_image.'-b.jpg');
-            \File::delete(public_path() .'/upload/menu/'.$menu->menu_image.'-s.jpg');
-            
-            $tmpFilePath = 'upload/menu/';          
-             
+            // Ensure directory exists
+            if (!Storage::disk('public')->exists('menu')) {
+                Storage::disk('public')->makeDirectory('menu');
+            }
+            if ($menu->menu_image) {
+                Storage::disk('public')->delete('menu/'.$menu->menu_image.'-b.jpg');
+                Storage::disk('public')->delete('menu/'.$menu->menu_image.'-s.jpg');
+            }
             $hardPath = substr($inputs['menu_name'],0,100).'_'.time();
-            
             $img = Image::make($menu_image);
-
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
-            $img->fit(100, 100)->save($tmpFilePath.$hardPath. '-s.jpg');
-
+            $img->save(storage_path('app/public/menu/'.$hardPath.'-b.jpg'));
+            $img->fit(100, 100)->save(storage_path('app/public/menu/'.$hardPath.'-s.jpg'));
             $menu->menu_image = $hardPath;
-             
         }
 		 
 		$menu->restaurant_id = $inputs['restaurant_id'];

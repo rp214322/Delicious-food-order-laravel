@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Session;
 use Intervention\Image\Facades\Image; 
+use Illuminate\Support\Facades\Storage;
 
 
 class TypesController extends MainAdminController
@@ -81,21 +82,17 @@ class TypesController extends MainAdminController
         $type_image = $request->file('type_image');
          
         if($type_image){
-            
-             \File::delete(public_path() .'/upload/type/'.$type_obj->type_image.'.jpg');
-             
-            
-            $tmpFilePath = 'upload/type/';          
-             
+            // Ensure directory exists
+            if (!Storage::disk('public')->exists('type')) {
+                Storage::disk('public')->makeDirectory('type');
+            }
+            if ($type_obj->type_image) {
+                Storage::disk('public')->delete('type/'.$type_obj->type_image.'.jpg');
+            }
             $hardPath = substr($inputs['type'],0,100).'_'.time();
-            
             $img = Image::make($type_image);
-
-            $img->fit(160, 160)->save($tmpFilePath.$hardPath.'.jpg');
-            //$img->fit(98, 98)->save($tmpFilePath.$hardPath. '-s.jpg');
-
+            $img->fit(160, 160)->save(storage_path('app/public/type/'.$hardPath.'.jpg'));
             $type_obj->type_image = $hardPath;
-             
         }
 		 
 		

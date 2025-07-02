@@ -11,7 +11,7 @@
       <div class="container">
         <div id="sub_content" class="animated zoomIn">
     <div class="col-md-2 col-sm-3">
-      <div id="thumb"><img alt="{{$restaurant->restaurant_name}}" src="{{ URL::asset('upload/restaurants/'.$restaurant->restaurant_logo.'-b.jpg') }}"></div>
+      <div id="thumb"><img alt="{{$restaurant->restaurant_name}}" src="{{ asset('storage/restaurants/'.$restaurant->restaurant_logo.'-b.jpg') }}"></div>
     </div>  
     <div class="col-md-10 col-sm-9">  
       <h1>{{$restaurant->restaurant_name}}</h1>

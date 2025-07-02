@@ -79,8 +79,7 @@
                         <div class="media">
                             <div class="media-left">
                                 @if(isset($restaurant->restaurant_logo))
-                                 
-                                    <img src="{{ URL::asset('upload/restaurants/'.$restaurant->restaurant_logo.'-s.jpg') }}" width="100" alt="person">
+                                    <img src="{{ asset('storage/restaurants/'.$restaurant->restaurant_logo.'-s.jpg') }}" width="100" alt="person">
                                 @endif
                                                                 
                             </div>

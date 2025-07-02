@@ -1,6 +1,7 @@
 @extends("app")
 @section("content")
- 
+@php use Illuminate\Support\Str; @endphp
+
 @include("_particles.search_slider") 
 
 <!-- Content ================================================== --> 
@@ -12,7 +13,7 @@
    <nav id="list_shortcuts">
     <ul>
     @foreach($types as $type)
-    <li> <a title="Chinese" href="{{URL::to('restaurants/type/'.$type->id)}}" data-cuisine="chinese"> <img alt="{{$type->type}}" src="{{ URL::asset('upload/type/'.$type->type_image.'.jpg') }}"> <span>{{$type->type}}</span> </a> </li>
+    <li> <a title="Chinese" href="{{URL::to('restaurants/type/'.$type->id)}}" data-cuisine="chinese"> <img alt="{{$type->type}}" src="{{ asset('storage/type/'.$type->type_image.(Str::endsWith($type->type_image, '.jpg') ? '' : '.jpg')) }}"> <span>{{$type->type}}</span> </a> </li>
     @endforeach
      
 
@@ -46,7 +47,7 @@
                 @endfor
                 
               </div>
-            <div class="thumb_strip"> <img src="{{ URL::asset('upload/restaurants/'.$restaurant->restaurant_logo.'-s.jpg') }}" alt="{{ $restaurant->restaurant_name }}"> </div>
+            <div class="thumb_strip"> <img src="{{ asset('storage/restaurants/'.$restaurant->restaurant_logo.'-s.jpg') }}" alt="{{ $restaurant->restaurant_name }}"> </div>
           </div>
           </a> 
         </div>

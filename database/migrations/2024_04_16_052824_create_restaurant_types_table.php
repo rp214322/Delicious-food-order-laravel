@@ -15,7 +15,7 @@ class CreateRestaurantTypesTable extends Migration
         Schema::create('restaurant_types', function (Blueprint $table) {
             $table->increments('id');            
             $table->string('type');
-            $table->string('type_image');
+            $table->string('type_image')->nullable();
         });
     }
 

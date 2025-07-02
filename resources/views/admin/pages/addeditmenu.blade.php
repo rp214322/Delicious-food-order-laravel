@@ -77,7 +77,7 @@
                             <div class="media-left">
                                 @if(isset($menu->menu_image))
                                  
-                                    <img src="{{ URL::asset('upload/menu/'.$menu->menu_image.'-s.jpg') }}" width="100" alt="person">
+                                    <img src="{{ asset('storage/menu/'.$menu->menu_image.'-s.jpg') }}" width="100" alt="person">
                                 @endif
                                                                 
                             </div>

@@ -1,4 +1,4 @@
-<div class="top-bar">
+{{-- <div class="top-bar">
     <!-- <div class="container">
       <ul class="left-bar-side">
         <li><p><i class="fa fa-envelope-o"></i><a href="mailto:{{getcong('site_email')}}">{{getcong('site_email')}}</a></p></li>
@@ -13,7 +13,7 @@
             <li><a href="{{getcong_widgets('social_youtube')}}" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
       </ul>
     </div> -->
-  </div>
+  </div> --}}
   <header class="sticky">
     <div class="container">
     <div class="logo">
